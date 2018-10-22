@@ -4,9 +4,9 @@ This is a React-Redux web application for creating a calendar of your meals. By 
 
 Fresh App's Instalation:
 
-1 - Clone this repo: git clone https://github.com/joselimaneto/mymeals.git
-2 - Make a copy of env.example as .env and add to it your Edaman's API credentials: `cp .env.example .env`
-3 - Run `yarn install` for npm_modules
-4 - Start the app by runnign `yarn start`
+- Clone this repo: git clone https://github.com/joselimaneto/mymeals.git
+- Make a copy of env.example as .env and add to it your Edaman's API credentials: `cp .env.example .env`
+- Run `yarn install` for npm_modules
+- Start the app by runnign `yarn start`
 
 The project is part of my portfolio as a React Developer and it was was a code-along with the React Nanodegree program I took in 2018.
