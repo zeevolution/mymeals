@@ -2,18 +2,61 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import { addRecipe, removeFromCalendar } from "../actions";
+import { capitalize } from "../utils/helpers";
+import { FaCalendarPlus } from "react-icons/fa";
 
 class App extends Component {
-  doThing = () => {
-    this.props.selectRecipe({});
-  };
   render() {
-    console.log("Props", this.props);
-    return <div>Hello World!</div>;
+    const { calendar, remove } = this.props;
+    const mealOrder = ["breakfast", "lunch", "dinner"];
+
+    return (
+      <div className="container">
+        <ul className="meal-types">
+          {mealOrder.map(mealType => (
+            <li key={mealType} className="subheader">
+              {capitalize(mealType)}
+            </li>
+          ))}
+        </ul>
+
+        <div className="calendar">
+          <div className="days">
+            {calendar.map(({ day }) => (
+              <h3 key={day} className="subheader">
+                {capitalize(day)}
+              </h3>
+            ))}
+          </div>
+          <div className="icon-grid">
+            {calendar.map(({ day, meals }) => (
+              <ul key={day}>
+                {mealOrder.map(meal => (
+                  <li key={meal} className="meal">
+                    {meals[meal] ? (
+                      <div className="food-item">
+                        <img src={meals[meal].image} alt={meals[meal].label} />
+                        <button onClick={() => remove({ meal, day })}>
+                          Clear
+                        </button>
+                      </div>
+                    ) : (
+                      <button className="icon-btn">
+                        <FaCalendarPlus size={30} />
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
-function mapStateToProps(calendar) {
+function mapStateToProps({ calendar, food }) {
   const dayOrder = [
     "sunday",
     "monday",
@@ -27,7 +70,7 @@ function mapStateToProps(calendar) {
     calendar: dayOrder.map(day => ({
       day,
       meals: Object.keys(calendar[day]).reduce((meals, meal) => {
-        meals[meal] = calendar[day][meal] ? calendar[day][meal] : null;
+        meals[meal] = calendar[day][meal] ? food[calendar[day][meal]] : null;
 
         return meals;
       }, {})
