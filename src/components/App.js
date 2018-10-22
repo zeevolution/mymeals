@@ -83,7 +83,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="nav">
-          <h1 className="header">UdaciMeals</h1>
+          <h1 className="header">My Meals</h1>
           <button className="shopping-list" onClick={this.openIngredientsModal}>
             Shopping List
           </button>
