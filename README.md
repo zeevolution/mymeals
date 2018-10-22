@@ -1,4 +1,4 @@
-# MyMeals ReactJS Application
+# MyMeals React-Redux Application
 
 This is a React-Redux web application for creating a calendar of your meals. By running this application, you will be able to add your specific Food for your daily Breakfast, Lunch and Dinner. The Food data comes from the Edamam API. In order to make API call, please sign up for an account at Edamam's API[https://developer.edamam.com/].
 
